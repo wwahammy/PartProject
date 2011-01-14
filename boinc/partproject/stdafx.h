@@ -35,6 +35,7 @@
 using namespace std;
 
 // TODO: reference additional headers your program requires here
+#include "assert.h"
 #include "partproject.h"
 
 #define INPUT_FILE "part_input.txt"
