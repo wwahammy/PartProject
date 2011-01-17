@@ -10,7 +10,7 @@ def update_boinc
 	Kernel.exec("svn update boinc --force")
 end
 
-def checkout_boost
+
 
 def clean_build
 	Kernel.exec("boinc/make clean");
@@ -29,7 +29,7 @@ def make
 	end
 end
 
-def main_automake(change)
+def main_automake(change=false)
 
 	if (change)
 		Dir.chdir "boinc"
@@ -51,9 +51,12 @@ def main_automake(change)
 	}
 	
 
+	Dir.chdir "sched" do
+		sched_automake
+	end
 end
 
-def sched_automake(change)
+def sched_automake(change=false)
 	
 	if (change)
 		Dir.chdir "boinc/sched"
@@ -63,15 +66,18 @@ def sched_automake(change)
 	
 		if (line =~ /\w*sched_PROGRAMS = .*?\\\n$/)
 			if (!line.include?("partproject_assimilator"))
-				line.sub!(/\\/," partproject_assimilator partproject_work_generator\n")
+				line.sub!(/\\/," partproject_assimilator \\\npartproject_work_generator \\")
 			end
 			
 		end
 		
-		if (line =~ /\*sample_work_generator_LDADD = \$\(SERVERLIBS\)\w*$/)
-			line << "\npartproject_work_generator_SOURCES = partproject_work_generator.cpp\n"
+		if (line =~ /\w*sample_work_generator_LDADD.*?$/)
+			line << "\npartproject_work_generator_SOURCES = partproject_work_generator.cpp"
 			line << "\npartproject_work_generator_LDADD = $(SERVERLIBS)\n"
 			line << "\npartproject_assimilator_SOURCES = $(ASSIMILATOR_SOURCES) partproject_assimilator.cpp"
+			line << "\npartproject_assimilator_LDADD = $(SERVERLIBS) ../../boost/stage/lib/libboost_regex.a"
+			line << "\npartproject_assimilator_CXXFLAGS= $(AM_CPP_FLAGS) ../../boost\n"
+		end
 	}
 	File.rename("Makefile.am", "Makefile.am.OLD")
 	File.open("Makefile.am", "w") {|io|
@@ -82,14 +88,19 @@ end
 def setup_and_make
 	
 	Dir.chdir "boost" do
+		puts "Building Boost -- running bootstrap...."
+		puts `./bootstrap.sh --with-libraries=regex`
 		
+		puts "Building Boost -- running bjam...."
+		puts `./bjam`
 	end
 	
+	puts "Now beginning BOINC build...."
 	Dir.chdir "boinc" do
 	
-		puts "Modifying Automake files..."
+		puts "Modifying Automake files....\n"
 		
-		
+		main_automake
 		
 		puts "Running autosetup...."
 		output = `./_autosetup`
@@ -111,7 +122,7 @@ end
 
 case ARGV[0]
 	when "checkout"
-		checkout_boinc
+		checkout
 	when "update_boinc"
 		update_boinc
 	when "make"
@@ -120,6 +131,8 @@ case ARGV[0]
 		setup_and_make
 	when "lines"
 		lines(true)
+	when "main_automake"
+		main_automake(true)
+	when "sched_automake"
+		sched_automake(true)
 end
-
-
