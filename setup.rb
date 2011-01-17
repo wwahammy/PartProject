@@ -2,7 +2,7 @@ def checkout
 	puts "Checking out boinc...."
 	puts `svn co http://boinc.berkeley.edu/svn/trunk/boinc --force`
 	puts "\nChecking out boost...."
-	Kernel.exec("svn co http://svn.boost.org/svn/boost/tags/release/Boost_1_45_0/ boost"
+	Kernel.exec("svn co http://svn.boost.org/svn/boost/tags/release/Boost_1_45_0/ boost")
 end
 
 def update_boinc
