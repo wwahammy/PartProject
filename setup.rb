@@ -76,7 +76,7 @@ def sched_automake(change=false)
 			line << "\npartproject_work_generator_LDADD = $(SERVERLIBS)\n"
 			line << "\npartproject_assimilator_SOURCES = $(ASSIMILATOR_SOURCES) partproject_assimilator.cpp"
 			line << "\npartproject_assimilator_LDADD = $(SERVERLIBS) ../../boost/stage/lib/libboost_regex.a"
-			line << "\npartproject_assimilator_CXXFLAGS= $(AM_CPP_FLAGS) ../../boost\n"
+			line << "\npartproject_assimilator_CXXFLAGS= $(AM_CPP_FLAGS) -I../../boost\n"
 		end
 	}
 	File.rename("Makefile.am", "Makefile.am.OLD")
