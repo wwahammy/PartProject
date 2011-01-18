@@ -1,0 +1,58 @@
+
+I WANT TO USE THE RESULTS
+--------------
+Make sure you have the prerequisites in 
+"PREREQUISITES (for building software based on the results)"
+
+Copy the file PartProject.h from your
+
+
+PREREQUISITES (for building software based on the results)
+--------------
+On Unix-y systems:
+ * Pretty much any version of GCC.
+
+On Windows systems:
+ * Pretty much any version of Visual C++/Visual Studio
+
+PREREQUISITES (for building client and building and running server)
+--------------
+
+All operating systems require the following software installed
+   * A 1.8 compliant ruby interpreter (must be able to call via ruby)
+
+Other prerequisites vary by operating system
+Prerequisites in order build and runPartProject will differ based on 
+your operating system.
+
+For Unix/Linux:
+(As described at http://boinc.berkeley.edu/trac/wiki/SoftwarePrereqsUnix)
+   * Subversion (svn)
+   * GNU Tools:
+      * make 3.79+
+      * m4 1.4+
+      * libtool 1.5+
+      * autoconf 2.58+
+      * automake 1.8+
+      * GCC 3.0.4+
+      * g++
+   * pkg-config 0.15+
+   * Python 2.2+ with MySQLdb module 0.9.2+ and XML module
+   * MySQL 4.0.9 or higher (include the client and lib/dev package)
+   * Apache with mod_ssl and PHP5+
+   * PHP5 with cli, db and mysql support
+   * OpenSSL 0.9.8+
+   * libstdc++.a
+
+Most of these can be easily retrieved through your distribution's package
+management system.
+
+For Windows:
+Prerequisites are downloaded pre-built by calling 'setup.rb win_depends'
+In order to build the client program, Visual Studio 2005 is required.
+Later versions may work but you will need a different version of
+the dependencies.
+   
+
+
+
