@@ -9,7 +9,7 @@ gzip on the file.
 files = File.join("**", "*")
 Dir.glob(files) { |filename|
 	unless (File.directory?(filename) || File.stat(filename).size == 100000012 || filename =~ /.*(\.rb|\.gz)/)
-		name = File.expand_path ("./#{filename}")
+		name = File.expand_path("./#{filename}")
 		File.rename(name, "#{name}.gz")
 		system("gzip -d #{name}.gz")
 		puts name
