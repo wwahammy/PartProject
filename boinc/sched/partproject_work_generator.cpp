@@ -147,30 +147,7 @@ void usage(char *name) {
 
 int main(int argc, char** argv) {
     int i, retval;
-/*
-    for (i=1; i<argc; i++) {
-        if (is_arg(argv[i], "d")) {
-            if (!argv[++i]) {
-                log_messages.printf(MSG_CRITICAL, "%s requires an argument\n\n", argv[--i]);
-                usage(argv[0]);
-                exit(1);
-            }
-            int dl = atoi(argv[i]);
-            log_messages.set_debug_level(dl);
-            if (dl == 4) g_print_queries = true;
-        } else if (is_arg(argv[i], "h") || is_arg(argv[i], "help")) {
-            usage(argv[0]);
-            exit(0);
-        } else if (is_arg(argv[i], "v") || is_arg(argv[i], "version")) {
-            printf("%s\n", SVN_VERSION);
-            exit(0);
-        } else {
-            log_messages.printf(MSG_CRITICAL, "unknown command line argument: %s\n\n", argv[i]);
-            usage(argv[0]);
-            exit(1);
-        }
-    }
-*/
+
     retval = config.parse_file();
     if (retval) {
         log_messages.printf(MSG_CRITICAL,
