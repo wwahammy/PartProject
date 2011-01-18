@@ -10,6 +10,10 @@ def update_boinc
 	Kernel.exec("svn update boinc --force")
 end
 
+def win_depends
+	puts "Checking out the windows dependencies. This may take a LONG time...."
+	Kernel.exec("svn co http://boinc.berkeley.edu/svn/trunk/boinc_depends_win_vs2005 win_depends")
+end
 
 
 def clean_build
@@ -123,12 +127,15 @@ end
 case ARGV[0]
 	when "checkout"
 		checkout
+	when "win_depends"
+		win_depends
 	when "update_boinc"
 		update_boinc
 	when "make"
 		make
 	when "setup_and_make"
 		setup_and_make
+	
 	when "lines"
 		lines(true)
 	when "main_automake"
