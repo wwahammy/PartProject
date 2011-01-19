@@ -1,3 +1,11 @@
+DIRECTORIES
+-------------
+boinc/partproject - contains the client program that performs calculations
+boinc/sched - contains the assimilator and work generator on the server side
+scripts - common scripts that are used for various purposes throughout the project
+result - the header file to read and use results and example programs illustrating 
+           it's use.
+
 
 I WANT TO USE THE RESULTS
 --------------
