@@ -4,7 +4,7 @@ I WANT TO USE THE RESULTS
 Make sure you have the prerequisites in 
 "PREREQUISITES (for building software based on the results)"
 
-Copy the file PartProject.h from your
+In the results subdirectory, see the README file.
 
 
 PREREQUISITES (for building software based on the results)
@@ -46,6 +46,9 @@ For Unix/Linux:
 
 Most of these can be easily retrieved through your distribution's package
 management system.
+
+NOTE: The client program is only barely tested on Linux. It works when 
+running from the command line but I can't certify anything beyond that.
 
 For Windows:
 Prerequisites are downloaded pre-built by calling 'setup.rb win_depends'

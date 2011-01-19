@@ -1,5 +1,5 @@
 #include "partproject.h"
-// get_n [filename] [n to test]
+// get_n [filename] [n to get]
 int main(int argc, char** argv)
 {  
    int n_test = 0;

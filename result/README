@@ -1,0 +1,93 @@
+HOWTO
+--------------
+Creating a C program to use a particular result is relatively simple.
+
+Let's say you want to create a C program and you put it into this 
+directory. You add the following line to the top of your C program:
+
+#include <partproject.h>
+
+This provides your program with access to the code that can open and use
+a results file.
+
+Near the beginning of your program, call the "partopen" function with
+the path to the result file you'd like to open and use. For example, if
+you want to open a file named "results1" in the same directory as your
+program you call the function as follows:
+
+partopen("results1");
+
+This function call opens the file and fills the following variables:
+
+* parts - an array of shorts. Each element is the result of the b_k mod m
+            calculation for the n value at that index. In other words,
+            parts[n] = b_k(n) mod m
+* n - the length of the parts array (as an int). This corresponds to the
+         the max n value calculated + 1. If we calculated the b_k mod m 
+         for all n's from 0 to 9, the value of the variable n would be 10.
+* k - the k-regularity of the results (as an int). If we calculated the
+         2-regular partition function, k would be 2.
+* m - the operand of the modulus on every result in the partition
+         function. If modulus 2 was performed on every value of the 
+         k-regular partition function, the m would be 2.
+         
+Use these variables to perform any sort of calculations you need on the
+results.
+
+Compiling your C program will not change. For example, to compile the 
+sample program 'get_n' using the following command at the terminal:
+
+gcc -oget_n get_n.c
+         
+SAMPLES
+--------------
+This directory contains a few example programs of how to create programs
+that use results. These examples don't contain error handling code on 
+incorrect input to better highlight how to write programs.
+
+The examples are:
+   * get_n - prints the value of the partition function for a 
+               particular n value in the results file. It takes two 
+               arguments:
+               - the first is the name of the results file to use
+               - the second is the particular n you want to get the 
+                 value for
+               
+               For example, if you have a results file named 'results' 
+               and want to get the calculation of b_k(3) mod m from this
+               file you would run the following command at the
+               terminal:
+               
+               get_n results 3
+   
+   * congruence - checks if a given congruence (b_k(an+b) is 0 modulo m)
+                     holds true for all valuesin a result file. Prints 
+                     yes if the congruence holds true for all cases in 
+                     the result file. If the congruence does not hold 
+                     true, it prints no and the value of n at which the
+                     congruence ends. It takes three arguments:
+                     - the first is the name of the results file to use
+                     - the second is the value of a in the equation
+                     - the third is the value of b in the equations
+                     
+                     For example, if you have a results file named 'results' 
+                     and want to check the congruence of b_k(5n + 4) mod m
+                     from this file, you would run the following command
+                     at the terminal:
+                     
+                     congruence results 5 4
+   
+   * typed_congruence - Finds all congruences of a given type. Given an
+                           a finds all values of b such that 0 <= b < a
+                           and such that b_k(an+b) is 0 modulo m in the
+                           file. It takes two arguments
+                           - the first is the name of the results file to
+                             use
+                           - the second is the value of a in the equation
+                           
+                           For example, if you have a results file named 
+                           'results' and want to find the congruences with
+                           a = 10 in this file, you would run the following 
+                           command at the terminal:
+                           
+                           typed_congruence results 10
