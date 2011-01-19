@@ -61,9 +61,9 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="libcmtd.lib libcpmtd.lib"
+				AdditionalDependencies="libboinc_staticcrt.lib libboincapi_staticcrt.lib libcmtd.lib libcpmtd.lib kernel32.lib user32.lib ole32.lib delayimp.lib"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="../win_build/Build/Win32/$(ConfigurationName)"
+				AdditionalLibraryDirectories="../win_build/Build/Win32/$(ConfigurationName)/"
 				IgnoreAllDefaultLibraries="true"
 				IgnoreDefaultLibraryNames=""
 				GenerateDebugInformation="true"
@@ -140,7 +140,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="libboinc_staticcrt.lib libboincapi_staticcrt.lib  kernel32.lib user32.lib ole32.lib delayimp.lib"
+				AdditionalDependencies="libboinc_staticcrt.lib libboincapi_staticcrt.lib libcmtd.lib libcpmtd.lib kernel32.lib user32.lib ole32.lib delayimp.lib"
 				LinkIncremental="0"
 				AdditionalLibraryDirectories="../win_build/Build/Win32/$(ConfigurationName)"
 				IgnoreAllDefaultLibraries="false"
@@ -227,22 +227,6 @@
 			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}"
 			>
 		</Filter>
-		<File
-			RelativePath="..\config.xml"
-			>
-		</File>
-		<File
-			RelativePath="..\partproject_result.xml"
-			>
-		</File>
-		<File
-			RelativePath="..\partproject_wu.xml"
-			>
-		</File>
-		<File
-			RelativePath="..\project.xml"
-			>
-		</File>
 	</Files>
 	<Globals>
 	</Globals>
