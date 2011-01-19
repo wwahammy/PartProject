@@ -1,23 +1,35 @@
 #include "partproject.h"
-// congruence [filename] [a] [b]
+// typed_congruences [filename] [a]
 int main(int argc, char** argv)
 {
-   int i, a, b, truth;
+   int i, a, b;
+   int * b_true;
    partopen(argv[1]);
-   //when truth is 1, it's true
-   truth = 1;
    a = atoi(argv[2]);
-   for (b = 0; b < a; b++)
+   
+   //create the b_true array and init to true
+   b_true = (int* )malloc(sizeof(int)* a);
+   for (i = 0; i < a; i++)
    {
-      for (i =0,  (a*i) + b < 50000000 && truth; i++)
-      {
-          truth = parts[(a*i) + b] == 0;
-          break;
-      }
+      b_true[i] = 1;
    }
    
-   if (truth)
-      printf("yes\n");
-   else
-      printf("no at %i\n", i);
+   for (b = 0; b < a; b++)
+   {
+      for (i =0;  (a*i) + b < 50000000 && b_true[b]; i++)
+      {
+          b_true[b] = parts[(a*i) + b] == 0;
+      }
+   }
+
+   printf( "{");
+   for (i = 0; i < a; i++)
+   {
+      if (b_true[i])
+         printf("%i,", i);
+   }
+   
+   printf( "}");
+   
+   return 0;
 }
