@@ -1,5 +1,4 @@
 #include "partproject.h"
-
 // typed_congruences [filename] [a]
 int main(int argc, char** argv)
 {
