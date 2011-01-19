@@ -16,7 +16,7 @@ end
 
 def win_depends
     puts "Checking out the windows dependencies. This may take a LONG time...."
-    Kernel.exec("svn co http://boinc.berkeley.edu/svn/trunk/boinc_depends_win_vs2005 win_depends")
+    Kernel.exec("svn co http://boinc.berkeley.edu/svn/trunk/boinc_depends_win_vs2005")
 end
 
 

@@ -61,8 +61,9 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="$(SolutionDir)compiled_lib\Win32\$(ConfigurationName)\libboinc_staticcrt.lib $(SolutionDir)compiled_lib\Win32\$(ConfigurationName)\libboincapi_staticcrt.lib libcmtd.lib libcpmtd.lib kernel32.lib user32.lib ole32.lib delayimp.lib"
+				AdditionalDependencies="libcmtd.lib libcpmtd.lib"
 				LinkIncremental="2"
+				AdditionalLibraryDirectories="../win_build/Build/Win32/$(ConfigurationName)"
 				IgnoreAllDefaultLibraries="true"
 				IgnoreDefaultLibraryNames=""
 				GenerateDebugInformation="true"
@@ -139,8 +140,9 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="$(SolutionDir)compiled_lib\Win32\$(ConfigurationName)\libboinc_staticcrt.lib $(SolutionDir)compiled_lib\Win32\$(ConfigurationName)\libboincapi_staticcrt.lib odbc32.lib odbccp32.lib libcmt.lib libcpmt.lib"
+				AdditionalDependencies="libboinc_staticcrt.lib libboincapi_staticcrt.lib  kernel32.lib user32.lib ole32.lib delayimp.lib"
 				LinkIncremental="0"
+				AdditionalLibraryDirectories="../win_build/Build/Win32/$(ConfigurationName)"
 				IgnoreAllDefaultLibraries="false"
 				GenerateDebugInformation="true"
 				SubSystem="1"
