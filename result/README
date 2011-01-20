@@ -91,3 +91,7 @@ The examples are:
                            command at the terminal:
                            
                            typed_congruence results 10
+   
+   * file_info - prints out the n, k, m values in a result file. It takes a
+                     single argument, which is the the filename of the
+                     result file.
