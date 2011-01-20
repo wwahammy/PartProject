@@ -2,7 +2,7 @@ DIRECTORIES
 -------------
 boinc/partproject - contains the client program that performs calculations
 boinc/sched - contains the assimilator and work generator on the server side
-scripts - common scripts that are used for various purposes throughout the project
+scripts - basic scripts that are used for various purposes throughout the project
 result - the header file to read and use results and example programs illustrating 
            it's use.
 server - files used in some way for setting up your project server and
