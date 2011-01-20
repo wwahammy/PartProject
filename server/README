@@ -1,0 +1,14 @@
+In order to create a server, please visit the BOINC wiki and follow the
+instructions there and then use the files  in this folder as necessary.
+
+FILES
+--------------
+config_daemons.xml - contains the contents of the daemons element for
+                        a server's config.xml file.
+
+partproject_result.xml - template for creating results that correspond to
+                           workunits. Insert into the templates subfolder
+                           of the server.
+                           
+partproject_wu.xml - template for creating workunits. Insert into the 
+                        templates subfolder of the server.

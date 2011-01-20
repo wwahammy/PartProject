@@ -1,6 +1,7 @@
 // This file is part of BOINC.
 // http://boinc.berkeley.edu
-// Copyright (C) 2008 University of California
+//
+// Copyright (C) 2010-11 Eric Schultz, 2008 University of California
 //
 // BOINC is free software; you can redistribute it and/or modify it
 // under the terms of the GNU Lesser General Public License
@@ -15,9 +16,14 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with BOINC.  If not, see <http://www.gnu.org/licenses/>.
 
-// A sample assimilator that:
-// 1) if success, copy the output file(s) to a directory
-// 2) if failure, append a message to an error log
+// Assimilator for PartProject
+// If there's a valid, canonical result, the result is copied to the results
+// directory. It is put into the following subdirectory based on the 
+// number of n calculated, the k-regularity calculated and the mod m 
+// used. For the a result with 50 million values for the 2-regular 
+// partition function, mod 5 the results path would be:
+// results/n50000000/k2/m5
+// If a workunit failed, an error is written out to the results/errors file
 
 #include <vector>
 #include <string>
@@ -34,6 +40,7 @@
 using std::vector;
 using std::string;
 
+//writes an error out to the errors file in the results directory
 int write_error(char* p) {
     static FILE* f = 0;
 	int retval = boinc_mkdir(config.project_path("results"));
@@ -48,6 +55,7 @@ int write_error(char* p) {
     return 0;
 }
 
+//main handler, moves the file to proper folder or writes out an error
 int assimilate_handler(
     WORKUNIT& wu, vector<RESULT>& /*results*/, RESULT& canonical_result
 ) {
@@ -88,12 +96,6 @@ int assimilate_handler(
 			}
 	        
 			if (!file_copied) {
-				/*
-				copy_path = config.project_path(
-					"sample_results/%s_%s", wu.name, "no_output_files"
-				);
-				FILE* f = fopen(copy_path, "w");
-				fclose(f);*/
 				
 				sprintf(buf, "failed to copy for wu: %s - %s to %s\n", wu.name, fi.path.c_str(), copy_path);
 				return write_error(buf);

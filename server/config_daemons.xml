@@ -1,0 +1,25 @@
+    <daemon>
+      <cmd>
+        feeder -d 3 
+      </cmd>
+    </daemon>
+    <daemon>
+      <cmd>
+        transitioner -d 3 
+      </cmd>
+    </daemon>
+    <daemon>
+      <cmd>
+        file_deleter -d 3 
+      </cmd>
+    </daemon>
+    <daemon>
+		<cmd>
+			sample_bitwise_validator -d 3 --app partproject --update_credited_job
+		</cmd>
+    </daemon>
+    <daemon>
+		<cmd>
+			partproject_assimiliator -d 3 --app partproject
+		</cmd>
+    </daemon>

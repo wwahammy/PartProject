@@ -1,6 +1,6 @@
 // This file is part of BOINC.
 // http://boinc.berkeley.edu
-// Copyright (C) 2008 University of California
+// Copyright (C) 2010-11 Eric Schultz, 2008 University of California
 //
 // BOINC is free software; you can redistribute it and/or modify it
 // under the terms of the GNU Lesser General Public License
@@ -15,17 +15,7 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with BOINC.  If not, see <http://www.gnu.org/licenses/>.
 
-// sample_work_generator.cpp: an example BOINC work generator.
-// This work generator has the following properties
-// (you may need to change some or all of these):
-//
-// - Runs as a daemon, and creates an unbounded supply of work.
-//   It attempts to maintain a "cushion" of 100 unsent job instances.
-//   (your app may not work this way; e.g. you might create work in batches)
-// - Creates work for the application "uppercase".
-// - Creates a new input file for each job;
-//   the file (and the workunit names) contain a timestamp
-//   and sequence number, so that they're unique.
+// Work generator for the PartProject file. Creates work units.
 
 #include <unistd.h>
 #include <cstdlib>
@@ -105,6 +95,7 @@ int make_job(int k_reg, int m) {
     );
 }
 
+// creates all the workunits
 void main_loop() {
     int retval;
 
@@ -125,26 +116,9 @@ void main_loop() {
 	}
 }
 
-void usage(char *name) {
-    fprintf(stderr, "This is an example BOINC work generator.\n"
-        "This work generator has the following properties\n"
-        "(you may need to change some or all of these):\n"
-        "- Runs as a daemon, and creates an unbounded supply of work.\n"
-        "  It attempts to maintain a \"cushion\" of 100 unsent job instances.\n"
-        "  (your app may not work this way; e.g. you might create work in batches)\n"
-        "- Creates work for the application \"uppercase\".\n"
-        "- Creates a new input file for each job;\n"
-        "  the file (and the workunit names) contain a timestamp\n"
-        "  and sequence number, so that they're unique.\n\n"
-        "Usage: %s [OPTION]...\n\n"
-        "Options:\n"
-        "  [ -d X ]                    Sets debug level to X.\n"
-        "  [ -h | --help ]             Shows this help text.\n"
-        "  [ -v | --version ]          Shows version information.\n",
-        name
-    );
-}
 
+// grabs the work unit template, adds what is needed and then creates
+// the work units.
 int main(int argc, char** argv) {
     int i, retval;
 

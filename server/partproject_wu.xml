@@ -1,0 +1,5 @@
+<workunit>
+	<delay_bound>1814400</delay_bound>
+	<rsc_fpops_est>45e12</rsc_fpops_est>
+	<rsc_fpops_bound>45e14</rsc_fpops_bound>
+</workunit>
