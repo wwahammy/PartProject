@@ -22,10 +22,10 @@ PREREQUISITES (for building client and building and running server)
 --------------
 
 All operating systems require the following software installed
-   * A 1.8 compliant ruby interpreter (must be able to call via ruby)
+   * A 1.8 compliant ruby interpreter (must be able to call via 'ruby')
 
 Other prerequisites vary by operating system
-Prerequisites in order build and runPartProject will differ based on 
+Prerequisites in order build and run PartProject will differ based on 
 your operating system.
 
 For Unix/Linux:
@@ -59,7 +59,26 @@ In order to build the client program, Visual Studio 2005 is required.
 Later versions may work but you will need a different version of
 the dependencies.
    
+HOW TO BUILD PARTPROJECT (once you have prerequisites)
+--------------
+First call 'ruby setup.rb checkout'. This will checkout BOINC and Boost
+which are needed to compile PartProject.
 
+If you're on Unix-y systems:
+Next call 'ruby setup.rb setup_and_make'. This builds Boost, BOINC and
+PartProject. You're done!
+
+If you're on Windows:
+Next call 'ruby setup.rb win_depends'. This gets all the Windows
+dependencies. 
+
+Open the BOINC.sln file in boinc/win_build in Visual Studio 2005. Build
+the libboinc_staticcrt and libboincapi_staticcrt projects.
+
+Finally open the partproject.vcproj file in boinc/partproject in Visual
+Studio 2005. Build the partproject project. NOTE: This only compiles the
+BOINC client application, not the server side components. These do not
+compile on Windows.
 
 I WANT TO USE THE RESULTS
 --------------
