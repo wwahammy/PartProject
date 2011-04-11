@@ -1,11 +1,11 @@
 #include "partproject.h"
-// typed_congruences [filename] [a]
+// typed_congruences [n_arg] [k_arg] [m_arg] [a]
 int main(int argc, char** argv)
 {
    int i, a, b;
    int * b_true;
-   partopen(argv[1]);
-   a = atoi(argv[2]);
+   partopen(argv[1], argv[2], argv[3]);
+   a = atoi(argv[4]);
    
    //create the b_true array and init to true
    b_true = (int* )malloc(sizeof(int)* a);
