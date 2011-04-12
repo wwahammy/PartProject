@@ -25,7 +25,7 @@ All operating systems require the following software installed
    * A 1.8 compliant ruby interpreter (must be able to call via 'ruby')
 
 Other prerequisites vary by operating system
-Prerequisites in order build and run PartProject will differ based on 
+Prerequisites in order to build and run PartProject will differ based on 
 your operating system.
 
 For Unix/Linux:
