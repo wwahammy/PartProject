@@ -35,7 +35,7 @@ int __findInDir(char * dir)
 	
 }
 
-int partopen(char * n_arg, char * m_arg, char * k_arg)
+int partopen(char * n_arg, char * k_arg, char * m_arg)
 {
 	FILE * file;
 	DIR * mntDir = opendir("/media");
